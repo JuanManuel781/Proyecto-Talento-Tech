@@ -1,4 +1,5 @@
 import colores_print
+from  calcular_media import calcular_media
 
 estado = True
 numeros = []
@@ -13,76 +14,80 @@ while estado:
     print(f'{colores_print.AZUL}4. Desviación estándar{colores_print.RESET}')
     print(f'{colores_print.AZUL}5. Salir{colores_print.RESET}')
 
+    numeros = []  
+
     try:
-        opcion = int (input('Ingrese que opcion quiere realizar: '))
+        opcion = int(input('Ingrese qué opción quiere realizar: '))
         
-        if opcion ==1:
-            opcion_uno = int (input('Ingrese cuantos numeros quiere ingresar: '))    
+        if opcion == 1:
+            opcion_uno = int(input('Ingrese cuántos números quiere ingresar para calcular la media: '))
             for _ in range(opcion_uno):
                 while True:
                     try:
-                        elemento = int(input(f'Ingrese un numero: '))
-                        if elemento <=0:
-                            print(f'{colores_print.ROJO}El numero ingresado debe ser mayor que 0.{colores_print.RESET}')  
+                        elemento = int(input('Ingrese un número: '))
+                        if elemento <= 0:
+                            print(f'{colores_print.ROJO}El número ingresado debe ser mayor que 0.{colores_print.RESET}')
                         else:
                             numeros.append(elemento)
-                            print(f'{colores_print.VERDE}Media es:{numeros}{colores_print.RESET}')
                             break
-                    except (ValueError, TypeError):
-            
-                        print(f'{colores_print.ROJO}El parametro ingresada no es valido{colores_print.RESET}')      
-        elif opcion ==2:
-            opcion_dos = int (input('Ingrese cuanto numeros quiere ingresar: '))
+                    except ValueError:
+                        print(f'{colores_print.ROJO}El parámetro ingresado no es válido. Debe ser un número entero.{colores_print.RESET}')
+
+            resultado = calcular_media(numeros)
+            print(f'{colores_print.VERDE}{resultado}{colores_print.RESET}')
+
+        elif opcion == 2:
+            opcion_dos = int(input('Ingrese cuántos números quiere ingresar para calcular la mediana: '))
             for _ in range(opcion_dos):
-                while True: 
+                while True:
                     try:
-                        elemento = int(input(f'Ingrese un numero: '))
-                        if elemento <=0:
-                             print(f'{colores_print.ROJO}El numero ingresado debe ser mayor que 0.{colores_print.RESET}')  
+                        elemento = int(input('Ingrese un número: '))
+                        if elemento <= 0:
+                            print(f'{colores_print.ROJO}El número ingresado debe ser mayor que 0.{colores_print.RESET}')
                         else:
                             numeros.append(elemento)
-                            print(f'{colores_print.VERDE}Mediana es:{numeros}{colores_print.RESET}')
                             break
-                    except (ValueError, TypeError):
-                        print(f'{colores_print.ROJO}El parametro ingresada no es valido{colores_print.RESET}')     
-        elif opcion ==3:
-            opcion_tres = int (input('Ingrese cuanto numeros quiere ingresar: '))
+                    except ValueError:
+                        print(f'{colores_print.ROJO}El parámetro ingresado no es válido. Debe ser un número entero.{colores_print.RESET}')
+            print(f'{colores_print["VERDE"]}Mediana es: {calcular_mediana(numeros)}{colores_print["RESET"]}')
+
+        elif opcion == 3:
+            opcion_tres = int(input('Ingrese cuántos números quiere ingresar: '))
             for _ in range(opcion_tres):
-                while True: 
+                while True:
                     try:
-                        elemento = int(input(f'Ingrese un numero: '))
-                        if elemento <=0:
-                            print(f'{colores_print.ROJO}El numero ingresado debe ser mayor que 0.{colores_print.RESET}')  
+                        elemento = int(input('Ingrese un número: '))
+                        if elemento <= 0:
+                            print(f'{colores_print.ROJO}El número ingresado debe ser mayor que 0.{colores_print.RESET}')
                         else:
                             numeros.append(elemento)
-                            print(f'{colores_print.VERDE}Moda es:{numeros}{colores_print.RESET}')
                             break
-                    except (ValueError, TypeError):
-                        print(f'{colores_print.ROJO}El parametro ingresada no es valido{colores_print.RESET}')   
-        elif opcion ==4:
-            opcion_cuatro = int (input('Ingrese cuanto numeros quiere ingresar: '))
+                    except ValueError:
+                        print(f'{colores_print.ROJO}El parámetro ingresado no es válido. Debe ser un número entero.{colores_print.RESET}')
+            print(f'{colores_print["VERDE"]}Moda es: {calcular_moda(numeros)}{colores_print["RESET"]}')
+
+        elif opcion == 4:
+            opcion_cuatro = int(input('Ingrese cuántos números quiere ingresar: '))
             for _ in range(opcion_cuatro):
-                while True: 
+                while True:
                     try:
-                        elemento = int(input(f'Ingrese un numero: '))
-                        if elemento <=0:
-                            print(f'{colores_print.ROJO}El numero ingresado debe ser mayor que 0.{colores_print.RESET}') 
+                        elemento = int(input('Ingrese un número: '))
+                        if elemento <= 0:
+                            print(f'{colores_print.ROJO}El número ingresado debe ser mayor que 0.{colores_print.RESET}')
                         else:
                             numeros.append(elemento)
-                            print(f'{colores_print.VERDE}Desviación estándar es:{numeros}{colores_print.RESET}')
                             break
-                    except (ValueError, TypeError):
-                        print(f'{colores_print.ROJO}El parametro ingresada no es valido{colores_print.RESET}')   
-            
+                    except ValueError:
+                        print(f'{colores_print.ROJO}El parámetro ingresado no es válido. Debe ser un número entero.{colores_print.RESET}')
+            print(f'{colores_print["VERDE"]}Desviación estándar es: {calcular_desviacion_estandar(numeros)}{colores_print["RESET"]}')
+
         elif opcion == 5:
             print("Gracias por utilizar la Calculadora de Estadísticas Básicas.")
             estado = False
         else:
-            print("Opción no válida. Por favor, ingrese una opcion del 1 al 4 para seleccionar una operación.")
+            print(f'{colores_print.ROJO}Opción no válida. Por favor, ingrese una opción del 1 al 5 para seleccionar una operación.{colores_print.RESET}')
     
-    except (ValueError, TypeError):
+    except ValueError:
         print(f'{colores_print.ROJO}====================================={colores_print.RESET}')
-        print(f'{colores_print.ROJO}la opcion ingresada no existe{colores_print.RESET}')
-        estado = True
+        print(f'{colores_print.ROJO}La opción ingresada no es válida. Debe ser un número entero.{colores_print.RESET}')
         print(f'{colores_print.ROJO}====================================={colores_print.RESET}')
-
