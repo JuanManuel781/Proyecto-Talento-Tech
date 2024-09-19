@@ -1,5 +1,5 @@
 import colores_print
-from  calcular_media import calcular_media
+from calculadora import *
 
 estado = True
 numeros = []
@@ -38,6 +38,7 @@ while estado:
 
         elif opcion == 2:
             opcion_dos = int(input('Ingrese cuántos números quiere ingresar para calcular la mediana: '))
+            numeros = []  # Inicializa la lista de números
             for _ in range(opcion_dos):
                 while True:
                     try:
@@ -49,7 +50,8 @@ while estado:
                             break
                     except ValueError:
                         print(f'{colores_print.ROJO}El parámetro ingresado no es válido. Debe ser un número entero.{colores_print.RESET}')
-            print(f'{colores_print["VERDE"]}Mediana es: {calcular_mediana(numeros)}{colores_print["RESET"]}')
+    
+            print(f'{colores_print.VERDE}{calcular_mediana(numeros)}{colores_print.RESET}')
 
         elif opcion == 3:
             opcion_tres = int(input('Ingrese cuántos números quiere ingresar: '))
@@ -64,7 +66,7 @@ while estado:
                             break
                     except ValueError:
                         print(f'{colores_print.ROJO}El parámetro ingresado no es válido. Debe ser un número entero.{colores_print.RESET}')
-            print(f'{colores_print["VERDE"]}Moda es: {calcular_moda(numeros)}{colores_print["RESET"]}')
+            print(f'{colores_print.VERDE}{calcular_moda(numeros)}{colores_print.RESET}')
 
         elif opcion == 4:
             opcion_cuatro = int(input('Ingrese cuántos números quiere ingresar: '))
@@ -79,7 +81,7 @@ while estado:
                             break
                     except ValueError:
                         print(f'{colores_print.ROJO}El parámetro ingresado no es válido. Debe ser un número entero.{colores_print.RESET}')
-            print(f'{colores_print["VERDE"]}Desviación estándar es: {calcular_desviacion_estandar(numeros)}{colores_print["RESET"]}')
+            print(f'{colores_print.VERDE}Desviación estándar es: {calcular_desviacion_estandar(numeros)}{colores_print.RESET}')
 
         elif opcion == 5:
             print("Gracias por utilizar la Calculadora de Estadísticas Básicas.")
