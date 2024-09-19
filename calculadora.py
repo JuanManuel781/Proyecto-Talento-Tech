@@ -1,10 +1,12 @@
+import math
+
 def calcular_media(numeros):
     if len(numeros) == 0:
         return "La lista está vacía. No se puede calcular la media."
     suma = sum(numeros)
     cantidad = len(numeros)
     media = suma / cantidad
-    return f"La media de los siguientes números: {numeros} es: {media}"
+    return media
 
 
 def ordenar_numeros(numeros_mediana):
@@ -35,7 +37,7 @@ def calcular_mediana(numeros_mediana):
         medio2 = numeros_ordenados[n // 2]
         mediana = (medio1 + medio2) / 2
 
-    return f"La mediana de los siguientes números: {numeros_ordenados} es: {mediana}"
+    return f"La mediana de los siguientes números: {numeros_ordenados} es: {mediana:.2f}"
     
 
 def calcular_moda(numeros):
@@ -58,25 +60,39 @@ def calcular_moda(numeros):
     moda = max(conteo, key=conteo.get)
     frecuencia = conteo[moda]
     
-    return f"La moda de los siguientes números: {numeros} es: {moda}, que aparece {frecuencia} veces."
+    return f"La moda de los siguientes números: {numeros} es: {moda:.2f}, que aparece {frecuencia} veces."
 
     
-def calcular_desviacion_estandar(base_mayor, base_menor, altura):
-    try:
-        base_mayor = float(base_mayor)
-        base_menor = float(base_menor)
-        altura = float(altura)
-        
-        if base_mayor <= 0 or base_menor <= 0 or altura <= 0:
-            return "La base mayor, la base menor y la altura deben ser mayores que cero."
-        
-        if base_menor > base_mayor:
-            return "La base menor no puede ser mayor que la base mayor."
-
-        return f"El área del trapecio es: {((base_mayor + base_menor) * altura) / 2}"
+def calcular_varianza(numeros):
+    if len(numeros) == 0:
+        return "La lista está vacía. No se puede calcular la varianza."
     
-    except ValueError:
-        return "Los datos ingresados no son numéricos."
+    media = calcular_media(numeros)  # Recibe el valor retornado de la funcion calcular_media
+
+    suma_variancia = 0 
+
+    for i in numeros:
+        suma_variancia += (i-media)**2
+
+
+    varianza1 = suma_variancia / len(numeros)
+    varianza2 = suma_variancia / len(numeros)-1
+    
+    return varianza1,varianza2
+
+
+
+def calcular_desviacion_estandar(numeros):
+    if len(numeros) == 0:
+        return "La lista está vacía. No se puede calcular la varianza."
+    
+    varianza1 = calcular_varianza(varianza1)  # Recibe el valor retornado de la funcion calcular_varianza
+    varianza2 = calcular_varianza(varianza2)  # Recibe el valor retornado de la funcion calcular_varianza
+
+    desviacion_estandar1=math.sqrt(varianza1)
+    desviacion_estandar2=math.sqrt(varianza2)
+
+    return desviacion_estandar1, desviacion_estandar2
 
     
 
